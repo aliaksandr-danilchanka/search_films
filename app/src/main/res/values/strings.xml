@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Search Film</string>
+
+    <string name="search_field_hint">Please, enter your data</string>
+    <string name="search_button_name">Search</string>
+    <string name="search_error">You have problem with Internet</string>
+    <string name="search_no_results">No results</string>
+    <string name="search_films">Search films</string>
+    <string name="search_films_by_genres">Search films by genres</string>
+
+    <string name="open_drawer"></string>
+    <string name="close_drawer"></string>
+
+    <string name="information_film_genres">Genres: </string>
+    <string name="information_film_production_companies">Production Companies: </string>
+    <string name="information_film_production_countries">Production Countries: </string>
+
+</resources>
