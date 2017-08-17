@@ -13,10 +13,10 @@ import myproject.searchfilm.R;
  * Created by Aliaksandr on 8/15/2017.
  */
 
-public class SearchFilmByIdFragment extends Fragment{
+public class SearchFilmByGenresFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_search_film_by_id, null);
+        View v = inflater.inflate(R.layout.fragment_search_film_by_genres, null);
         ButterKnife.bind(this, v);
         return v;
     }

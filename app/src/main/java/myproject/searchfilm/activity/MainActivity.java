@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 import myproject.searchfilm.R;
 import myproject.searchfilm.activity.base.BaseActivity;
-import myproject.searchfilm.fragment.SearchFilmByIdFragment;
+import myproject.searchfilm.fragment.SearchFilmByGenresFragment;
 import myproject.searchfilm.fragment.SearchFilmsFragment;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,7 +60,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         } else if (id == R.id.nav_search_films_by_genres) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.container, new SearchFilmByIdFragment())
+                    .replace(R.id.container, new SearchFilmByGenresFragment())
                     .commit();
         }
 
