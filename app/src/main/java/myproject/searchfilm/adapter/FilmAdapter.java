@@ -28,7 +28,6 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
     public FilmAdapter(ArrayList<Film> films, OnFilmClickListener onFilmClickListener) {
         this.mFilms = films;
         this.mOnFilmClickListener = onFilmClickListener;
-
     }
 
     @Override
@@ -67,11 +66,11 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
     }
 
     public interface OnFilmClickListener {
+
         void onFilmClicked(Film film);
     }
 
     public static class FilmViewHolder extends RecyclerView.ViewHolder {
-
 
         CardView cv;
         ImageView poster;
@@ -89,7 +88,6 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             originalLanguage = itemView.findViewById(R.id.txt_original_language);
             releaseDate = itemView.findViewById(R.id.txt_release_date);
             overview = itemView.findViewById(R.id.txt_overview);
-
         }
     }
 }
