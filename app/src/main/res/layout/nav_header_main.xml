@@ -4,24 +4,28 @@
               android:layout_height="wrap_content"
               android:theme="@style/ThemeOverlay.AppCompat.Dark"
               android:orientation="vertical"
-              android:background="@color/shadow"
+              android:background="@drawable/drawer_background"
               android:gravity="bottom">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"/>
+        android:src="@mipmap/ic_launcher"
+        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Android Studio"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:text="@string/drawer_name_application"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="@dimen/text_size_large"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="android.studio@android.com"
-        android:id="@+id/textView"/>
+        android:text="@string/drawer_product_by"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="@dimen/text_size_medium"
+        />
 
 </LinearLayout>

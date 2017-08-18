@@ -11,6 +11,9 @@
     <string name="open_drawer"></string>
     <string name="close_drawer"></string>
 
+    <string name="drawer_name_application">Search Films</string>
+    <string name="drawer_product_by">Product by Aliaksandr Danilchanka</string>
+
     <string name="information_film_genres">Genres: </string>
     <string name="information_film_production_companies">Production Companies: </string>
     <string name="information_film_production_countries">Production Countries: </string>
