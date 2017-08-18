@@ -4,9 +4,11 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_search_films"
+            android:icon="@drawable/ic_find_replace_black_18dp"
             android:title="@string/search_films"/>
         <item
             android:id="@+id/nav_search_films_by_genres"
+            android:icon="@drawable/ic_find_in_page_black_18dp"
             android:title="@string/search_films_by_genres"/>
     </group>
 
