@@ -1,5 +1,6 @@
 package myproject.searchfilm.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import myproject.searchfilm.R;
+import myproject.searchfilm.activity.ListOfFilmsByGenreActivity;
 import myproject.searchfilm.adapter.GenreAdapter;
 import myproject.searchfilm.api.RestHelper;
 import myproject.searchfilm.model.Genre;
@@ -22,6 +24,8 @@ import myproject.searchfilm.model.GenreListResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static myproject.searchfilm.activity.ListOfFilmsByGenreActivity.ID_GENRE_KEY;
 
 
 /**
@@ -105,12 +109,9 @@ public class SearchFilmByGenresFragment extends Fragment {
         GenreAdapter rvAdapter = new GenreAdapter(mGenres, new GenreAdapter.OnGenreClickListener() {
             @Override
             public void onGenreClicked(Genre genre) {
-                Fragment myFragment = ListOfFilmsByGenreFragment.newInstance(genre.getId());
-                getActivity().getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container, myFragment)
-                        .addToBackStack(null)
-                        .commit();
+                Intent intent = new Intent(getActivity(), ListOfFilmsByGenreActivity.class);
+                intent.putExtra(ID_GENRE_KEY, genre.getId());
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(rvAdapter);

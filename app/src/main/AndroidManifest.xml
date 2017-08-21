@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".activity.InformationFilmActivity">
         </activity>
+        <activity android:name=".activity.ListOfFilmsByGenreActivity">
+        </activity>
     </application>
 
 </manifest>
