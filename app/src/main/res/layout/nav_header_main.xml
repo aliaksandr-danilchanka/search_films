@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_launcher"
+        android:layout_margin="@dimen/margin_small"
         />
 
     <TextView
@@ -18,7 +19,9 @@
         android:layout_height="wrap_content"
         android:text="@string/drawer_name_application"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="@dimen/text_size_large"/>
+        android:textSize="@dimen/text_size_large"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,6 +29,8 @@
         android:text="@string/drawer_product_by"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="@dimen/text_size_medium"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
         />
 
 </LinearLayout>
