@@ -16,26 +16,26 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import myproject.searchfilm.R;
-import myproject.searchfilm.activity.ListOfFilmsByGenreActivity;
-import myproject.searchfilm.adapter.GenreAdapter;
+import myproject.searchfilm.activity.InformationFilmActivity;
+import myproject.searchfilm.adapter.FilmAdapter;
 import myproject.searchfilm.api.RestHelper;
-import myproject.searchfilm.model.Genre;
-import myproject.searchfilm.model.GenreListResponse;
+import myproject.searchfilm.model.Film;
+import myproject.searchfilm.model.FilmListResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static myproject.searchfilm.activity.ListOfFilmsByGenreActivity.ID_GENRE_KEY;
-
+import static myproject.searchfilm.activity.InformationFilmActivity.ID_FILM_KEY;
 
 /**
- * Created by Aliaksandr on 8/15/2017.
+ * Created by Aliaksandr on 8/19/2017.
  */
 
-public class SearchFilmByGenresFragment extends Fragment {
+public class ListOfFilmsByGenreFragment extends Fragment {
 
-    public static final String GENRE_KEY = "GENRE_KEY";
+    public static final String ID_KEY = "ID_KEY";
     private static final String API_KEY = "349f0282b34402e866888a09b5d49fb5";
+    private static final String FILMS_KEY = "FILMS_KEY";
 
     @BindView(R.id.recycler_view_for_search_by_genre)
     RecyclerView recyclerView;
@@ -46,7 +46,17 @@ public class SearchFilmByGenresFragment extends Fragment {
     @BindView(R.id.view_no_results_for_search_by_genre)
     LinearLayout viewNoResults;
 
-    private ArrayList<Genre> mGenres;
+    private ArrayList<Film> mFilms;
+    private int mIdGenre;
+
+    public static ListOfFilmsByGenreFragment newInstance(int id) {
+
+        Bundle args = new Bundle();
+        args.putInt(ID_KEY, id);
+        ListOfFilmsByGenreFragment fragment = new ListOfFilmsByGenreFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,65 +67,65 @@ public class SearchFilmByGenresFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
         showRecyclerView();
+        mIdGenre = getArguments().getInt(ID_KEY);
 
         if (savedInstanceState != null) {
-            mGenres = savedInstanceState.getParcelableArrayList(GENRE_KEY);
-            if (mGenres != null) {
-                initializeGenreAdapter();
-            }else{
-                showProgressBarView();
-                loadGenre();
+            mFilms = savedInstanceState.getParcelableArrayList(FILMS_KEY);
+            if(mFilms != null) {
+                initializeAdapter();
             }
-        } else {
+        }else{
             showProgressBarView();
-            loadGenre();
+            loadData();
         }
 
-        if (mGenres != null) {
-            initializeGenreAdapter();
+        if (mFilms != null) {
+            initializeAdapter();
         }
+
         return v;
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(GENRE_KEY, mGenres);
+        outState.putParcelableArrayList(FILMS_KEY, mFilms);
     }
 
-    private void loadGenre() {
-        RestHelper.getInterface().getGenreList(API_KEY).enqueue(new Callback<GenreListResponse>() {
+    private void loadData() {
+        RestHelper.getInterface().getFilmListByGenre(mIdGenre, API_KEY).enqueue(new Callback<FilmListResponse>() {
             @Override
-            public void onResponse(Call<GenreListResponse> call, Response<GenreListResponse> response) {
-                if (mGenres == null) mGenres = new ArrayList<>();
-                mGenres.clear();
-                mGenres.addAll(response.body().getGenres());
-                if (mGenres.isEmpty()) {
+            public void onResponse(Call<FilmListResponse> call, Response<FilmListResponse> response) {
+                if (mFilms == null) mFilms = new ArrayList<>();
+                mFilms.clear();
+                mFilms.addAll(response.body().getFilms());
+                if (mFilms.isEmpty()) {
                     showNoResultsView();
                 } else {
-                    initializeGenreAdapter();
+                    initializeAdapter();
                     showRecyclerView();
                 }
             }
 
             @Override
-            public void onFailure(Call<GenreListResponse> call, Throwable t) {
+            public void onFailure(Call<FilmListResponse> call, Throwable t) {
                 showErrorView();
             }
         });
     }
 
-    private void initializeGenreAdapter() {
-        GenreAdapter rvAdapter = new GenreAdapter(mGenres, new GenreAdapter.OnGenreClickListener() {
+    private void initializeAdapter() {
+        FilmAdapter rvAdapter = new FilmAdapter(mFilms, new FilmAdapter.OnFilmClickListener() {
             @Override
-            public void onGenreClicked(Genre genre) {
-                Intent intent = new Intent(getActivity(), ListOfFilmsByGenreActivity.class);
-                intent.putExtra(ID_GENRE_KEY, genre.getId());
+            public void onFilmClicked(Film film) {
+                Intent intent = new Intent(getActivity(), InformationFilmActivity.class);
+                intent.putExtra(ID_FILM_KEY, film.getId());
                 startActivity(intent);
             }
         });
         recyclerView.setAdapter(rvAdapter);
     }
+
 
     private void showRecyclerView() {
         recyclerView.setVisibility(View.VISIBLE);
