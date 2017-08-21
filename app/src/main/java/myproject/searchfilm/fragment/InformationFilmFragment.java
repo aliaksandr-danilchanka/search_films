@@ -130,7 +130,7 @@ public class InformationFilmFragment extends Fragment {
                 .getResources()
                 .getString(R.string.information_film_production_countries);
         for (int i = 0; i < mFilm.getProduction_countries().size(); i++) {
-            productionCountries += mFilm.getProduction_companies().get(i).getName() + " ";
+            productionCountries += mFilm.getProduction_countries().get(i).getName() + " ";
         }
         mProductionCountries.setText(productionCountries);
         mOverview.setText(mFilm.getOverview());
