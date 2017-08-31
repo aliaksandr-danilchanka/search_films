@@ -1,6 +1,6 @@
 Search Films Project
 ====
-
+Application that helps people search films on the Internet.People can search by name of film or can search films by genre.
 
 Dependencies
 ============
