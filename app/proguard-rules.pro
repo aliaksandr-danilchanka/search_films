@@ -23,3 +23,27 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-dontwarn com.squareup.okhttp.**
+
+# Entity classes
+
+-keep class  myproject.searchfilm.model.** { *; }
+
+## OkHttp3
+
+-keepattributes *Annotation*
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn okhttp3.**
+-dontwarn okio.**
+
+## Retrofit 2.X
+
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+-keepclasseswithmembers class * {
+@retrofit2.http.* <methods>;
+}
