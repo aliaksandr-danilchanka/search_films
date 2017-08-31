@@ -26,6 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static myproject.searchfilm.activity.ListOfFilmsByGenreActivity.ID_GENRE_KEY;
+import static myproject.searchfilm.activity.ListOfFilmsByGenreActivity.NAME_GENRE_KEY;
 
 
 /**
@@ -111,6 +112,7 @@ public class SearchFilmByGenresFragment extends Fragment {
             public void onGenreClicked(Genre genre) {
                 Intent intent = new Intent(getActivity(), ListOfFilmsByGenreActivity.class);
                 intent.putExtra(ID_GENRE_KEY, genre.getId());
+                intent.putExtra(NAME_GENRE_KEY, genre.getName());
                 startActivity(intent);
             }
         });
