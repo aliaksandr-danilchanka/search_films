@@ -76,7 +76,12 @@ public class InformationFilmFragment extends Fragment {
         mIdFilm = getArguments().getInt(ID_KEY);
         if (savedInstanceState != null) {
             mFilm = savedInstanceState.getParcelable(FILM_KEY);
-            initializeData();
+            if(mFilm != null) {
+                initializeData();
+            }else{
+                showProgressBar();
+                loadData();
+            }
         } else {
             showProgressBar();
             loadData();

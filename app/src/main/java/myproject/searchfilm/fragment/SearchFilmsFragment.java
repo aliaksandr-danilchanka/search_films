@@ -70,6 +70,9 @@ public class SearchFilmsFragment extends Fragment {
             films = savedInstanceState.getParcelableArrayList(FILMS_KEY);
             if(films != null) {
                 initializeAdapter();
+            }else if(films == null && editText.getText().length() != 0){
+                showProgressBarView();
+                loadData();
             }
         }
 

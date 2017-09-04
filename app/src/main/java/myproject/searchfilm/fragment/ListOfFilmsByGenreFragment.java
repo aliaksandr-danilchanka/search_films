@@ -73,6 +73,9 @@ public class ListOfFilmsByGenreFragment extends Fragment {
             mFilms = savedInstanceState.getParcelableArrayList(FILMS_KEY);
             if(mFilms != null) {
                 initializeAdapter();
+            }else{
+                showProgressBarView();
+                loadData();
             }
         }else{
             showProgressBarView();
