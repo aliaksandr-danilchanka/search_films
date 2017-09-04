@@ -1,6 +1,6 @@
 Search Films Project
 ====
-Application that helps people search films on the Internet.People can search by name of film or can search films by genre.
+Application that helps users search films in the [database](https://www.themoviedb.org).Users can search by name of film or can search films by genre.
 
 Dependencies
 ============
